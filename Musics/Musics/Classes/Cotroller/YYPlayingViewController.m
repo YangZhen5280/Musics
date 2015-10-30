@@ -26,6 +26,7 @@
 
     self.view.y = self.view.height;
     [UIView animateWithDuration:1.0 animations:^{
+      
         self.view.y = 0;
     }];
 }
