@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  YYPlayingViewController.h
 //  Musics
 //
 //  Created by 杨振 on 15/10/30.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
-
+@interface YYPlayingViewController : UIViewController
+- (void)show;
 @end
-
