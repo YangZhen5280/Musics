@@ -13,7 +13,23 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhv-It-CzV">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="close" destination="-1" eventType="touchUpInside" id="CZL-Aa-qMq"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="0.88902232969999995" green="1" blue="0.75703250369999997" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="nhv-It-CzV" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="2Ki-Bg-tN0"/>
+                <constraint firstItem="nhv-It-CzV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7OK-eg-svC"/>
+                <constraint firstItem="nhv-It-CzV" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="f8r-WM-JDn"/>
+                <constraint firstItem="nhv-It-CzV" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="oNI-U9-WNt"/>
+            </constraints>
+            <point key="canvasLocation" x="336" y="373"/>
         </view>
     </objects>
 </document>
