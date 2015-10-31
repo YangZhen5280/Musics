@@ -12,13 +12,15 @@
 #import "YYMusic.h"
 #import "YYMusicTools.h"
 #import "YYAudioTools.h"
+#import "YYLrcView.h"
 
-@interface YYPlayingViewController ()
+@interface YYPlayingViewController () <AVAudioPlayerDelegate>
 
 @property (nonatomic, strong) YYMusic *playingMusic;
 @property (nonatomic, strong) NSTimer *progressTimer;
 @property (nonatomic, strong) AVAudioPlayer *player;
 
+@property (weak, nonatomic) IBOutlet YYLrcView *LrcView;
 
 @property (weak, nonatomic) IBOutlet UILabel *singerName;
 @property (weak, nonatomic) IBOutlet UILabel *songeName;
@@ -106,6 +108,8 @@
     self.player = [YYAudioTools playMusicWithName:playingMusic.filename];
     self.totalTimeLabel.text = [self stringWithTime:self.player.duration];
     
+    self.player.delegate = self;
+    
     [self addProgressTimer];
     [self updateInfo];
     
@@ -152,7 +156,7 @@
         self.sliderLeftConstrant.constant = 0;
     }
     else if (point.x >= self.view.width - self.sliderButton.width * 0.5) {
-        self.sliderLeftConstrant.constant = self.view.width - self.sliderButton.width;
+        self.sliderLeftConstrant.constant = self.view.width - self.sliderButton.width - 1;
     }
     else {
         self.sliderLeftConstrant.constant = point.x - self.sliderButton.width * 0.5;
@@ -174,7 +178,7 @@
         self.sliderLeftConstrant.constant = 0;
     }
     else if (self.sliderLeftConstrant.constant >= self.view.width - self.sliderButton.width) {
-        self.sliderLeftConstrant.constant = self.view.width - self.sliderButton.width;
+        self.sliderLeftConstrant.constant = self.view.width - self.sliderButton.width - 1;
     }
     else {
         self.sliderLeftConstrant.constant += point.x;
@@ -226,6 +230,25 @@
     [self startPlayingMusic];
 }
 
+#pragma mark - AVAudioPlayerDelegate
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    if (flag) {
+        [self nextButtonClick];
+    }
+}
+- (void)audioPlayerBeginInterruption:(AVAudioPlayer *)player {
+    [self playorStopButton];
+}
+- (void)audioPlayerEndInterruption:(AVAudioPlayer *)player {
+    [self playorStopButton];
+}
+
+
+#pragma mark - 显示歌词
+- (IBAction)soneLrcs:(UIButton *)sender {
+    self.showLrcButton.selected = !self.showLrcButton.selected;
+    self.LrcView.hidden = !self.LrcView.hidden;
+}
 
 #pragma mark - 私有方法
 - (NSString *)stringWithTime:(NSTimeInterval)time {
@@ -234,9 +257,4 @@
     return [NSString stringWithFormat:@"%02ld:%02ld",minute, second];
 }
 
-
-// 显示歌词
-- (IBAction)soneLrcs:(id)sender {
-    
-}
 @end

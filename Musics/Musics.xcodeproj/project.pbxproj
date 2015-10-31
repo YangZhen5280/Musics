@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		D9495D411BE4482200506C05 /* YYMusicTools.m in Sources */ = {isa = PBXBuildFile; fileRef = D9495D401BE4482200506C05 /* YYMusicTools.m */; settings = {ASSET_TAGS = (); }; };
 		D9495D441BE4483900506C05 /* YYAudioTools.m in Sources */ = {isa = PBXBuildFile; fileRef = D9495D431BE4483900506C05 /* YYAudioTools.m */; settings = {ASSET_TAGS = (); }; };
+		D94FB3A21BE50DD50064B8C6 /* DRNRealTimeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = D94FB39F1BE50DD50064B8C6 /* DRNRealTimeBlurView.m */; settings = {ASSET_TAGS = (); }; };
+		D94FB3A31BE50DD50064B8C6 /* UIImage+BoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = D94FB3A11BE50DD50064B8C6 /* UIImage+BoxBlur.m */; settings = {ASSET_TAGS = (); }; };
+		D94FB3A61BE50E0D0064B8C6 /* YYLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = D94FB3A51BE50E0D0064B8C6 /* YYLrcView.m */; settings = {ASSET_TAGS = (); }; };
 		D95EFE061BE3702900222326 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D95EFE051BE3702900222326 /* main.m */; };
 		D95EFE091BE3702900222326 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D95EFE081BE3702900222326 /* AppDelegate.m */; };
 		D95EFE0F1BE3702900222326 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D95EFE0D1BE3702900222326 /* Main.storyboard */; };
@@ -77,6 +80,12 @@
 		D9495D401BE4482200506C05 /* YYMusicTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYMusicTools.m; sourceTree = "<group>"; };
 		D9495D421BE4483900506C05 /* YYAudioTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYAudioTools.h; sourceTree = "<group>"; };
 		D9495D431BE4483900506C05 /* YYAudioTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYAudioTools.m; sourceTree = "<group>"; };
+		D94FB39E1BE50DD50064B8C6 /* DRNRealTimeBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRNRealTimeBlurView.h; sourceTree = "<group>"; };
+		D94FB39F1BE50DD50064B8C6 /* DRNRealTimeBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRNRealTimeBlurView.m; sourceTree = "<group>"; };
+		D94FB3A01BE50DD50064B8C6 /* UIImage+BoxBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BoxBlur.h"; sourceTree = "<group>"; };
+		D94FB3A11BE50DD50064B8C6 /* UIImage+BoxBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BoxBlur.m"; sourceTree = "<group>"; };
+		D94FB3A41BE50E0D0064B8C6 /* YYLrcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYLrcView.h; sourceTree = "<group>"; };
+		D94FB3A51BE50E0D0064B8C6 /* YYLrcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYLrcView.m; sourceTree = "<group>"; };
 		D95EFE011BE3702900222326 /* Musics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Musics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D95EFE051BE3702900222326 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D95EFE071BE3702900222326 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -170,6 +179,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D94FB39D1BE50DD50064B8C6 /* DRNRealTimeBlur */ = {
+			isa = PBXGroup;
+			children = (
+				D94FB39E1BE50DD50064B8C6 /* DRNRealTimeBlurView.h */,
+				D94FB39F1BE50DD50064B8C6 /* DRNRealTimeBlurView.m */,
+				D94FB3A01BE50DD50064B8C6 /* UIImage+BoxBlur.h */,
+				D94FB3A11BE50DD50064B8C6 /* UIImage+BoxBlur.m */,
+			);
+			path = DRNRealTimeBlur;
+			sourceTree = "<group>";
+		};
 		D95EFDF81BE3702800222326 = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +287,7 @@
 		D95EFE201BE3704F00222326 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				D94FB39D1BE50DD50064B8C6 /* DRNRealTimeBlur */,
 				D95EFE301BE3985B00222326 /* MJExtension */,
 			);
 			path = Lib;
@@ -287,6 +308,8 @@
 		D95EFE221BE3704F00222326 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D94FB3A41BE50E0D0064B8C6 /* YYLrcView.h */,
+				D94FB3A51BE50E0D0064B8C6 /* YYLrcView.m */,
 			);
 			name = View;
 			path = Classes/View;
@@ -507,6 +530,7 @@
 				D95EFE441BE3985B00222326 /* MJArgument.m in Sources */,
 				D95EFEA51BE3999200222326 /* YYMusic.m in Sources */,
 				D9495D411BE4482200506C05 /* YYMusicTools.m in Sources */,
+				D94FB3A21BE50DD50064B8C6 /* DRNRealTimeBlurView.m in Sources */,
 				D95EFE4B1BE3985B00222326 /* NSObject+MJKeyValue.m in Sources */,
 				D95EFE471BE3985B00222326 /* MJMethod.m in Sources */,
 				D9495D441BE4483900506C05 /* YYAudioTools.m in Sources */,
@@ -520,6 +544,8 @@
 				D95EFE4A1BE3985B00222326 /* NSObject+MJCoding.m in Sources */,
 				D95EFE091BE3702900222326 /* AppDelegate.m in Sources */,
 				D95EFE491BE3985B00222326 /* MJTypeEncoding.m in Sources */,
+				D94FB3A31BE50DD50064B8C6 /* UIImage+BoxBlur.m in Sources */,
+				D94FB3A61BE50E0D0064B8C6 /* YYLrcView.m in Sources */,
 				D95EFE061BE3702900222326 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

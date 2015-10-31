@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YYPlayingViewController">
             <connections>
+                <outlet property="LrcView" destination="OL2-js-Nyb" id="mmU-6q-RBV"/>
                 <outlet property="clickTime" destination="as9-Rf-fAC" id="SrJ-UN-XYh"/>
                 <outlet property="playOrStopButton" destination="JnO-qE-mTQ" id="ZOK-Yh-5H4"/>
                 <outlet property="showLrcButton" destination="sih-7E-2Lb" id="Gp6-U1-VbN"/>
@@ -33,6 +34,10 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play_cover_pic_bg" translatesAutoresizingMaskIntoConstraints="NO" id="1U0-MV-UGL" userLabel="背景图片">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="440"/>
                 </imageView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OL2-js-Nyb" customClass="YYLrcView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="440"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uL-Cq-fES" userLabel="底部控制器View">
                     <rect key="frame" x="0.0" y="440" width="600" height="160"/>
                     <subviews>
@@ -190,14 +195,18 @@
             <constraints>
                 <constraint firstItem="5uL-Cq-fES" firstAttribute="leading" secondItem="fmK-fx-W3B" secondAttribute="leading" id="1CZ-iF-xUf"/>
                 <constraint firstItem="1U0-MV-UGL" firstAttribute="top" secondItem="fmK-fx-W3B" secondAttribute="top" id="4Rz-w9-jQn"/>
+                <constraint firstItem="5uL-Cq-fES" firstAttribute="top" secondItem="OL2-js-Nyb" secondAttribute="bottom" id="5EI-Bt-3Rd"/>
                 <constraint firstItem="sih-7E-2Lb" firstAttribute="height" secondItem="rrq-oX-zaK" secondAttribute="height" id="60d-UO-pX5"/>
+                <constraint firstAttribute="trailing" secondItem="OL2-js-Nyb" secondAttribute="trailing" id="Aqb-u7-1QL"/>
                 <constraint firstAttribute="trailing" secondItem="sih-7E-2Lb" secondAttribute="trailing" constant="10" id="CLe-Wy-XnY"/>
                 <constraint firstAttribute="bottom" secondItem="5uL-Cq-fES" secondAttribute="bottom" id="EbA-th-9Vx"/>
                 <constraint firstAttribute="trailing" secondItem="5uL-Cq-fES" secondAttribute="trailing" id="PR2-D3-H8r"/>
+                <constraint firstItem="OL2-js-Nyb" firstAttribute="leading" secondItem="fmK-fx-W3B" secondAttribute="leading" id="T2P-cS-Rlv"/>
                 <constraint firstAttribute="bottom" secondItem="1U0-MV-UGL" secondAttribute="bottom" constant="160" id="VBL-3F-NNQ"/>
                 <constraint firstItem="sih-7E-2Lb" firstAttribute="top" secondItem="fmK-fx-W3B" secondAttribute="top" constant="30" id="W7P-d8-bT3"/>
                 <constraint firstAttribute="trailing" secondItem="1U0-MV-UGL" secondAttribute="trailing" id="d8y-Pd-RNZ"/>
                 <constraint firstItem="rrq-oX-zaK" firstAttribute="top" secondItem="fmK-fx-W3B" secondAttribute="top" constant="30" id="d9r-v6-QQT"/>
+                <constraint firstItem="OL2-js-Nyb" firstAttribute="top" secondItem="fmK-fx-W3B" secondAttribute="top" id="fgP-8b-LyH"/>
                 <constraint firstItem="sih-7E-2Lb" firstAttribute="width" secondItem="rrq-oX-zaK" secondAttribute="width" id="mW8-l9-N1b"/>
                 <constraint firstItem="1U0-MV-UGL" firstAttribute="leading" secondItem="fmK-fx-W3B" secondAttribute="leading" id="sLL-cN-x8c"/>
                 <constraint firstItem="rrq-oX-zaK" firstAttribute="leading" secondItem="fmK-fx-W3B" secondAttribute="leading" constant="10" id="z94-Mc-kdK"/>
