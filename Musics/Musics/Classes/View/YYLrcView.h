@@ -10,4 +10,6 @@
 
 @interface YYLrcView : DRNRealTimeBlurView
 
+@property (nonatomic, strong) NSString *lrcName;
+
 @end

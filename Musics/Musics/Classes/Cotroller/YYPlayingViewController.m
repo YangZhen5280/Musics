@@ -105,6 +105,8 @@
     self.singerName.text = playingMusic.singer;
     self.singerIcon.image = [UIImage imageNamed:playingMusic.icon];
     
+    self.LrcView.lrcName = playingMusic.lrcname;
+    
     self.player = [YYAudioTools playMusicWithName:playingMusic.filename];
     self.totalTimeLabel.text = [self stringWithTime:self.player.duration];
     

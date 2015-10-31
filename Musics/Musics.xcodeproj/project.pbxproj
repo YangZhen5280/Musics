@@ -12,6 +12,8 @@
 		D94FB3A21BE50DD50064B8C6 /* DRNRealTimeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = D94FB39F1BE50DD50064B8C6 /* DRNRealTimeBlurView.m */; settings = {ASSET_TAGS = (); }; };
 		D94FB3A31BE50DD50064B8C6 /* UIImage+BoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = D94FB3A11BE50DD50064B8C6 /* UIImage+BoxBlur.m */; settings = {ASSET_TAGS = (); }; };
 		D94FB3A61BE50E0D0064B8C6 /* YYLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = D94FB3A51BE50E0D0064B8C6 /* YYLrcView.m */; settings = {ASSET_TAGS = (); }; };
+		D94FB3A91BE514D30064B8C6 /* YYLrcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D94FB3A81BE514D30064B8C6 /* YYLrcCell.m */; settings = {ASSET_TAGS = (); }; };
+		D94FB3AC1BE517F10064B8C6 /* YYLrcLine.m in Sources */ = {isa = PBXBuildFile; fileRef = D94FB3AB1BE517F10064B8C6 /* YYLrcLine.m */; settings = {ASSET_TAGS = (); }; };
 		D95EFE061BE3702900222326 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D95EFE051BE3702900222326 /* main.m */; };
 		D95EFE091BE3702900222326 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D95EFE081BE3702900222326 /* AppDelegate.m */; };
 		D95EFE0F1BE3702900222326 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D95EFE0D1BE3702900222326 /* Main.storyboard */; };
@@ -86,6 +88,10 @@
 		D94FB3A11BE50DD50064B8C6 /* UIImage+BoxBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BoxBlur.m"; sourceTree = "<group>"; };
 		D94FB3A41BE50E0D0064B8C6 /* YYLrcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYLrcView.h; sourceTree = "<group>"; };
 		D94FB3A51BE50E0D0064B8C6 /* YYLrcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYLrcView.m; sourceTree = "<group>"; };
+		D94FB3A71BE514D30064B8C6 /* YYLrcCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYLrcCell.h; sourceTree = "<group>"; };
+		D94FB3A81BE514D30064B8C6 /* YYLrcCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYLrcCell.m; sourceTree = "<group>"; };
+		D94FB3AA1BE517F10064B8C6 /* YYLrcLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYLrcLine.h; sourceTree = "<group>"; };
+		D94FB3AB1BE517F10064B8C6 /* YYLrcLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYLrcLine.m; sourceTree = "<group>"; };
 		D95EFE011BE3702900222326 /* Musics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Musics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D95EFE051BE3702900222326 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D95EFE071BE3702900222326 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -259,6 +265,8 @@
 			children = (
 				D95EFEA31BE3999200222326 /* YYMusic.h */,
 				D95EFEA41BE3999200222326 /* YYMusic.m */,
+				D94FB3AA1BE517F10064B8C6 /* YYLrcLine.h */,
+				D94FB3AB1BE517F10064B8C6 /* YYLrcLine.m */,
 			);
 			name = Model;
 			path = Classes/Model;
@@ -310,6 +318,8 @@
 			children = (
 				D94FB3A41BE50E0D0064B8C6 /* YYLrcView.h */,
 				D94FB3A51BE50E0D0064B8C6 /* YYLrcView.m */,
+				D94FB3A71BE514D30064B8C6 /* YYLrcCell.h */,
+				D94FB3A81BE514D30064B8C6 /* YYLrcCell.m */,
 			);
 			name = View;
 			path = Classes/View;
@@ -535,8 +545,10 @@
 				D95EFE471BE3985B00222326 /* MJMethod.m in Sources */,
 				D9495D441BE4483900506C05 /* YYAudioTools.m in Sources */,
 				D95EFE451BE3985B00222326 /* MJIvar.m in Sources */,
+				D94FB3AC1BE517F10064B8C6 /* YYLrcLine.m in Sources */,
 				D95EFE2F1BE3985000222326 /* UIView+AdjustFrame.m in Sources */,
 				D95EFE4C1BE3985B00222326 /* NSObject+MJMember.m in Sources */,
+				D94FB3A91BE514D30064B8C6 /* YYLrcCell.m in Sources */,
 				D95EFE461BE3985B00222326 /* MJMember.m in Sources */,
 				D95EFEA91BE3AD1A00222326 /* YYPlayingViewController.m in Sources */,
 				D95EFE481BE3985B00222326 /* MJType.m in Sources */,
