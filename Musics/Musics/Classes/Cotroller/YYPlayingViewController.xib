@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YYPlayingViewController">
             <connections>
                 <outlet property="clickTime" destination="as9-Rf-fAC" id="SrJ-UN-XYh"/>
+                <outlet property="showTimeLabel" destination="Ejs-Qr-H2p" id="C3l-jG-CDJ"/>
                 <outlet property="singerIcon" destination="1U0-MV-UGL" id="GWs-Wc-Th2"/>
                 <outlet property="singerName" destination="4YJ-Dp-jDh" id="XjE-pf-QMZ"/>
                 <outlet property="sliderButton" destination="gwy-7Z-Mdy" id="9bL-eh-JFS"/>

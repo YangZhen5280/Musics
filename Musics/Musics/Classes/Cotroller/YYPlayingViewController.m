@@ -30,6 +30,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *sliderButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sliderLeftConstrant;
+@property (weak, nonatomic) IBOutlet UILabel *showTimeLabel;
 
 
 @end
@@ -38,6 +39,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.showTimeLabel.layer.cornerRadius = 5.0;
+    self.showTimeLabel.layer.masksToBounds = YES;
 
 }
 #pragma mark - 对控制器的操作
@@ -177,12 +181,17 @@
     
     NSString *currentTimeStr = [self stringWithTime:currentTime];
     [self.sliderButton setTitle:currentTimeStr forState:UIControlStateNormal];
+    self.showTimeLabel.text = currentTimeStr;
     
     if (sender.state == UIGestureRecognizerStateBegan) {
+        
         [self removeProgressTimer];
+        self.showTimeLabel.hidden = NO;
     } else if (sender.state == UIGestureRecognizerStateEnded) {
+       
         self.player.currentTime = currentTime;
         [self addProgressTimer];
+        self.showTimeLabel.hidden = YES;
     }
 }
 
