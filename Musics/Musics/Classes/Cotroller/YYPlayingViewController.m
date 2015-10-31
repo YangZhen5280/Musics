@@ -17,14 +17,19 @@
 
 @property (nonatomic, strong) YYMusic *playingMusic;
 @property (nonatomic, strong) NSTimer *progressTimer;
+@property (nonatomic, strong) AVAudioPlayer *player;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *singerName;
 @property (weak, nonatomic) IBOutlet UILabel *songeName;
+@property (weak, nonatomic) IBOutlet UIImageView *singerIcon;
+
 @property (weak, nonatomic) IBOutlet UILabel *clickTime;
 @property (weak, nonatomic) IBOutlet UILabel *soneTime;
-@property (weak, nonatomic) IBOutlet UIImageView *singerIcon;
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *sliderButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sliderLeftConstrant;
 
 
 @end
@@ -92,10 +97,11 @@
     self.singerName.text = playingMusic.singer;
     self.singerIcon.image = [UIImage imageNamed:playingMusic.icon];
     
-    AVAudioPlayer *player = [YYAudioTools playMusicWithName:playingMusic.filename];
-    self.totalTimeLabel.text = [self stringWithTime:player.duration];
+    self.player = [YYAudioTools playMusicWithName:playingMusic.filename];
+    self.totalTimeLabel.text = [self stringWithTime:self.player.duration];
     
     [self addProgressTimer];
+    [self updateInfo];
 }
 - (void)stopPlayingMusic {
     
@@ -119,6 +125,67 @@
     self.progressTimer = nil;
 }
 
+#pragma mark - 更新进度条的内容
+
+- (void)updateInfo {
+    
+    CGFloat progressRatio = self.player.currentTime / self.player.duration;
+    self.sliderLeftConstrant.constant = progressRatio * (self.view.width - self.sliderButton.width);
+    
+    NSString *currentTimeStr = [self stringWithTime:self.player.currentTime];
+    [self.sliderButton setTitle:currentTimeStr forState:UIControlStateNormal];
+}
+
+- (IBAction)tapProgressBackground:(UITapGestureRecognizer *)sender {
+    
+    CGPoint point = [sender locationInView:sender.view];
+    
+    if (point.x <= self.sliderButton.width * 0.5) {
+        self.sliderLeftConstrant.constant = 0;
+    }
+    else if (point.x >= self.view.width - self.sliderButton.width * 0.5) {
+        self.sliderLeftConstrant.constant = self.view.width - self.sliderButton.width;
+    }
+    else {
+        self.sliderLeftConstrant.constant = point.x - self.sliderButton.width * 0.5;
+    }
+    
+    CGFloat progressRatio = self.sliderLeftConstrant.constant / (self.view.width - self.sliderButton.width);
+    CGFloat currentTime = progressRatio * self.player.duration;
+    
+    self.player.currentTime = currentTime;
+    
+    [self updateInfo];
+}
+- (IBAction)panSliderButton:(UIPanGestureRecognizer *)sender {
+    
+    CGPoint point = [sender translationInView:sender.view];
+    [sender setTranslation:CGPointZero inView:sender.view];
+    
+    if (self.sliderLeftConstrant.constant + point.x <= 0) {
+        self.sliderLeftConstrant.constant = 0;
+    }
+    else if (self.sliderLeftConstrant.constant >= self.view.width - self.sliderButton.width) {
+        self.sliderLeftConstrant.constant = self.view.width - self.sliderButton.width;
+    }
+    else {
+        self.sliderLeftConstrant.constant += point.x;
+    }
+    
+    CGFloat progressRatio = self.sliderLeftConstrant.constant / (self.view.width - self.sliderButton.width);
+    CGFloat currentTime = progressRatio * self.player.duration;
+    
+    NSString *currentTimeStr = [self stringWithTime:currentTime];
+    [self.sliderButton setTitle:currentTimeStr forState:UIControlStateNormal];
+    
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        [self removeProgressTimer];
+    } else if (sender.state == UIGestureRecognizerStateEnded) {
+        self.player.currentTime = currentTime;
+        [self addProgressTimer];
+    }
+}
+
 #pragma mark - 私有方法
 - (NSString *)stringWithTime:(NSTimeInterval)time {
     NSInteger minute = time / 60;
@@ -126,11 +193,9 @@
     return [NSString stringWithFormat:@"%02ld:%02ld",minute, second];
 }
 
-- (void)updateInfo {
-    NSLog(@"%s",__FUNCTION__);
-}
 
 // 显示歌词
 - (IBAction)soneLrcs:(id)sender {
+    
 }
 @end
