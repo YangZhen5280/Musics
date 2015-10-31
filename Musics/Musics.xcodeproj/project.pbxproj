@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D9495D411BE4482200506C05 /* YYMusicTools.m in Sources */ = {isa = PBXBuildFile; fileRef = D9495D401BE4482200506C05 /* YYMusicTools.m */; settings = {ASSET_TAGS = (); }; };
+		D9495D441BE4483900506C05 /* YYAudioTools.m in Sources */ = {isa = PBXBuildFile; fileRef = D9495D431BE4483900506C05 /* YYAudioTools.m */; settings = {ASSET_TAGS = (); }; };
 		D95EFE061BE3702900222326 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D95EFE051BE3702900222326 /* main.m */; };
 		D95EFE091BE3702900222326 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D95EFE081BE3702900222326 /* AppDelegate.m */; };
 		D95EFE0F1BE3702900222326 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D95EFE0D1BE3702900222326 /* Main.storyboard */; };
 		D95EFE111BE3702900222326 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D95EFE101BE3702900222326 /* Assets.xcassets */; };
-		D95EFE141BE3702900222326 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D95EFE121BE3702900222326 /* LaunchScreen.storyboard */; };
 		D95EFE241BE396D900222326 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D95EFE231BE396D900222326 /* iAd.framework */; };
 		D95EFE291BE397FF00222326 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D95EFE281BE397FF00222326 /* ViewController.m */; settings = {ASSET_TAGS = (); }; };
 		D95EFE2E1BE3985000222326 /* UIImage+Circle.m in Sources */ = {isa = PBXBuildFile; fileRef = D95EFE2B1BE3985000222326 /* UIImage+Circle.m */; settings = {ASSET_TAGS = (); }; };
@@ -72,13 +73,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D9495D3F1BE4482200506C05 /* YYMusicTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYMusicTools.h; sourceTree = "<group>"; };
+		D9495D401BE4482200506C05 /* YYMusicTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYMusicTools.m; sourceTree = "<group>"; };
+		D9495D421BE4483900506C05 /* YYAudioTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYAudioTools.h; sourceTree = "<group>"; };
+		D9495D431BE4483900506C05 /* YYAudioTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYAudioTools.m; sourceTree = "<group>"; };
 		D95EFE011BE3702900222326 /* Musics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Musics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D95EFE051BE3702900222326 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D95EFE071BE3702900222326 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D95EFE081BE3702900222326 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D95EFE0E1BE3702900222326 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D95EFE101BE3702900222326 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D95EFE131BE3702900222326 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D95EFE151BE3702900222326 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D95EFE231BE396D900222326 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		D95EFE271BE397FF00222326 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 		D95EFE031BE3702900222326 /* Musics */ = {
 			isa = PBXGroup;
 			children = (
+				D95EFE211BE3704F00222326 /* Tool */,
 				D95EFE1D1BE3704F00222326 /* Model */,
 				D95EFE221BE3704F00222326 /* View */,
 				D95EFE1B1BE3704F00222326 /* Classes */,
@@ -193,7 +198,6 @@
 				D95EFE081BE3702900222326 /* AppDelegate.m */,
 				D95EFE0D1BE3702900222326 /* Main.storyboard */,
 				D95EFE101BE3702900222326 /* Assets.xcassets */,
-				D95EFE121BE3702900222326 /* LaunchScreen.storyboard */,
 				D95EFE151BE3702900222326 /* Info.plist */,
 				D95EFE041BE3702900222326 /* Supporting Files */,
 			);
@@ -214,7 +218,6 @@
 			children = (
 				D95EFE1C1BE3704F00222326 /* Cotroller */,
 				D95EFE1E1BE3704F00222326 /* Other */,
-				D95EFE211BE3704F00222326 /* Tool */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -272,8 +275,13 @@
 		D95EFE211BE3704F00222326 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				D9495D421BE4483900506C05 /* YYAudioTools.h */,
+				D9495D431BE4483900506C05 /* YYAudioTools.m */,
+				D9495D3F1BE4482200506C05 /* YYMusicTools.h */,
+				D9495D401BE4482200506C05 /* YYMusicTools.m */,
 			);
-			path = Tool;
+			name = Tool;
+			path = Classes/Tool;
 			sourceTree = "<group>";
 		};
 		D95EFE221BE3704F00222326 /* View */ = {
@@ -455,7 +463,6 @@
 				D95EFE8E1BE3989700222326 /* 10405520.lrc in Resources */,
 				D95EFE851BE3989700222326 /* kzxd_icon@2x.jpg in Resources */,
 				D95EFE801BE3989700222326 /* jay@2x.jpg in Resources */,
-				D95EFE141BE3702900222326 /* LaunchScreen.storyboard in Resources */,
 				D95EFE8D1BE3989700222326 /* zxy_icon@2x.jpg in Resources */,
 				D95EFE9F1BE3989700222326 /* 255319.mp3 in Resources */,
 				D95EFE8A1BE3989700222326 /* wf@2x.jpg in Resources */,
@@ -499,8 +506,10 @@
 				D95EFE291BE397FF00222326 /* ViewController.m in Sources */,
 				D95EFE441BE3985B00222326 /* MJArgument.m in Sources */,
 				D95EFEA51BE3999200222326 /* YYMusic.m in Sources */,
+				D9495D411BE4482200506C05 /* YYMusicTools.m in Sources */,
 				D95EFE4B1BE3985B00222326 /* NSObject+MJKeyValue.m in Sources */,
 				D95EFE471BE3985B00222326 /* MJMethod.m in Sources */,
+				D9495D441BE4483900506C05 /* YYAudioTools.m in Sources */,
 				D95EFE451BE3985B00222326 /* MJIvar.m in Sources */,
 				D95EFE2F1BE3985000222326 /* UIView+AdjustFrame.m in Sources */,
 				D95EFE4C1BE3985B00222326 /* NSObject+MJMember.m in Sources */,
@@ -524,14 +533,6 @@
 				D95EFE0E1BE3702900222326 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D95EFE121BE3702900222326 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D95EFE131BE3702900222326 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -621,6 +622,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				INFOPLIST_FILE = Musics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qqdenglu.Musics;
@@ -632,6 +634,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				INFOPLIST_FILE = Musics/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qqdenglu.Musics;
