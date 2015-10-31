@@ -32,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sliderLeftConstrant;
 @property (weak, nonatomic) IBOutlet UILabel *showTimeLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *playOrStopButton;
+@property (weak, nonatomic) IBOutlet UIButton *showLrcButton;
 
 @end
 
@@ -106,6 +108,8 @@
     
     [self addProgressTimer];
     [self updateInfo];
+    
+    self.playOrStopButton.selected = NO;
 }
 - (void)stopPlayingMusic {
     
@@ -194,6 +198,34 @@
         self.showTimeLabel.hidden = YES;
     }
 }
+#pragma mark - 音乐暂停、上一首、下一首
+- (IBAction)playorStopButton {
+    
+    self.playOrStopButton.selected = !self.playOrStopButton.selected;
+    
+    if (self.player.playing) {
+        [self.player pause];
+        [self removeProgressTimer];
+    } else {
+        [self.player play];
+        [self progressTimer];
+    }
+}
+
+- (IBAction)previousButtonClick {
+
+    [self stopPlayingMusic];
+    [YYMusicTools previousMusic];
+    [self startPlayingMusic];
+}
+
+- (IBAction)nextButtonClick {
+
+    [self stopPlayingMusic];
+    [YYMusicTools previousMusic];
+    [self startPlayingMusic];
+}
+
 
 #pragma mark - 私有方法
 - (NSString *)stringWithTime:(NSTimeInterval)time {
