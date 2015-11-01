@@ -38,6 +38,8 @@
     
     [self addSubview:tableView];
     self.tableView = tableView;
+    
+    self.currentIndex = -1;
 }
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -55,6 +57,12 @@
     YYLrcCell *cell = [YYLrcCell lrcCellWithTableView:tableView];
     
     cell.lrcLine = self.lrcLines[indexPath.row];
+    
+    if (indexPath.row == self.currentIndex) {
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:20.0];
+    } else {
+        cell.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
+    }
 
     return cell;
 }
@@ -103,14 +111,18 @@
 }
 - (void)setCurrentTime:(NSTimeInterval)currentTime {
     
+    if (_currentTime > currentTime) {
+        self.currentIndex = -1;
+    }
+    
     _currentTime = currentTime;
     NSInteger minute = currentTime / 60;
     NSInteger second = (NSInteger)currentTime % 60;
-    NSInteger millisecond = (currentTime - (NSInteger)currentTime) * 1000;
+    NSInteger millisecond = (currentTime - (NSInteger)currentTime) * 100;
     NSString *currentTimeStr = [NSString stringWithFormat:@"%02ld:%02ld.%02ld", minute, second, millisecond];
     
     NSInteger count = self.lrcLines.count;
-    for (int i = 0; i< count; i ++) {
+    for (NSInteger i = self.currentIndex + 1; i< count; i ++) {
         YYLrcLine *lrcLine = self.lrcLines[i];
         
         NSInteger nextIndex = i + 1;
@@ -120,7 +132,13 @@
             // 3.比较时间
             if ([currentTimeStr compare:lrcLine.time] != NSOrderedAscending && [currentTimeStr compare:nextLrcLine.time] != NSOrderedDescending && self.currentIndex != i) {
                 
+                NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:self.currentIndex inSection:0];
+                NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
+                
                 self.currentIndex = i;
+                
+                [self.tableView reloadRowsAtIndexPaths:@[currentIndexPath, nextIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+                [self.tableView scrollToRowAtIndexPath:nextIndexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
                 
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
                 [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
