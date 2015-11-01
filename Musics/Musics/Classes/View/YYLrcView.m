@@ -15,6 +15,7 @@
 
 @property (nonatomic,weak) UITableView *tableView;
 @property (nonatomic, strong) NSArray *lrcLines;
+@property (nonatomic, assign) NSInteger currentIndex;
 
 @end
 
@@ -100,7 +101,35 @@
     
     [self.tableView reloadData];
 }
-
+- (void)setCurrentTime:(NSTimeInterval)currentTime {
+    
+    _currentTime = currentTime;
+    NSInteger minute = currentTime / 60;
+    NSInteger second = (NSInteger)currentTime % 60;
+    NSInteger millisecond = (currentTime - (NSInteger)currentTime) * 1000;
+    NSString *currentTimeStr = [NSString stringWithFormat:@"%02ld:%02ld.%02ld", minute, second, millisecond];
+    
+    NSInteger count = self.lrcLines.count;
+    for (int i = 0; i< count; i ++) {
+        YYLrcLine *lrcLine = self.lrcLines[i];
+        
+        NSInteger nextIndex = i + 1;
+        if (nextIndex < count) {
+            YYLrcLine *nextLrcLine = self.lrcLines[nextIndex];
+            
+            // 3.比较时间
+            if ([currentTimeStr compare:lrcLine.time] != NSOrderedAscending && [currentTimeStr compare:nextLrcLine.time] != NSOrderedDescending && self.currentIndex != i) {
+                
+                self.currentIndex = i;
+                
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+                [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                
+                NSLog(@"%@---%@---%@", currentTimeStr, lrcLine.time, nextLrcLine.time);
+            }
+        }
+    }
+}
 
 
 

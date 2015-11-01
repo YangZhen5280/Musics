@@ -11,5 +11,6 @@
 @interface YYLrcView : DRNRealTimeBlurView
 
 @property (nonatomic, strong) NSString *lrcName;
+@property (nonatomic, assign) NSTimeInterval currentTime;
 
 @end

@@ -30,6 +30,7 @@
 - (void)setLrcLine:(YYLrcLine *)lrcLine {
     _lrcLine = lrcLine;
     self.textLabel.text = lrcLine.text;
+    
 }
 
 

@@ -170,7 +170,7 @@
     [self.sliderButton setTitle:currentTimeStr forState:UIControlStateNormal];
 }
 - (void)updateLrcTimer {
-    NSLog(@"更新歌词");
+    self.LrcView.currentTime = self.player.currentTime;
 }
 
 - (IBAction)tapProgressBackground:(UITapGestureRecognizer *)sender {
@@ -249,6 +249,10 @@
     [self stopPlayingMusic];
     [YYMusicTools previousMusic];
     [self startPlayingMusic];
+   
+    if (!self.LrcView.hidden) {
+        [self soneLrcs:nil];
+    }
 }
 
 - (IBAction)nextButtonClick {
@@ -256,6 +260,10 @@
     [self stopPlayingMusic];
     [YYMusicTools previousMusic];
     [self startPlayingMusic];
+    
+    if (!self.LrcView.hidden) {
+        [self soneLrcs:nil];
+    }
 }
 
 #pragma mark - AVAudioPlayerDelegate
