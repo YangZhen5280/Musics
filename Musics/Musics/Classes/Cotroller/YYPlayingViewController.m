@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) YYMusic *playingMusic;
 @property (nonatomic, strong) NSTimer *progressTimer;
+@property (nonatomic, strong) CADisplayLink *lrcTimer;
 @property (nonatomic, strong) AVAudioPlayer *player;
 
 @property (weak, nonatomic) IBOutlet YYLrcView *LrcView;
@@ -86,6 +87,9 @@
     } completion:^(BOOL finished) {
         
         window.userInteractionEnabled = YES;
+        
+        [self removeLrcTimer];
+        [self removeProgressTimer];
     }];
 }
 #pragma mark - 对音乐播放的控制
@@ -95,6 +99,7 @@
     YYMusic *playingMusic = [YYMusicTools playingMusic];
     if (playingMusic == self.playingMusic) {
         [self addProgressTimer];
+        [self addLrcTimer];
         return;
     }
     // 设置正在播放的音乐 为当前播放音乐
@@ -113,6 +118,7 @@
     self.player.delegate = self;
     
     [self addProgressTimer];
+    [self addLrcTimer];
     [self updateInfo];
     
     self.playOrStopButton.selected = NO;
@@ -127,6 +133,7 @@
     [YYAudioTools stopMusicWithName:self.playingMusic.filename];
     
     [self removeProgressTimer];
+    [self removeLrcTimer];
 }
 #pragma mark - 对定时器的操作
 
@@ -139,6 +146,19 @@
     self.progressTimer = nil;
 }
 
+- (void)addLrcTimer {
+    if (self.LrcView.hidden) {
+        return;
+    }
+    self.lrcTimer = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateLrcTimer)];
+    [self.lrcTimer addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    [self updateLrcTimer];
+}
+- (void)removeLrcTimer {
+    [self.lrcTimer invalidate];
+    self.lrcTimer = nil;
+}
+
 #pragma mark - 更新进度条的内容
 
 - (void)updateInfo {
@@ -148,6 +168,9 @@
     
     NSString *currentTimeStr = [self stringWithTime:self.player.currentTime];
     [self.sliderButton setTitle:currentTimeStr forState:UIControlStateNormal];
+}
+- (void)updateLrcTimer {
+    NSLog(@"更新歌词");
 }
 
 - (IBAction)tapProgressBackground:(UITapGestureRecognizer *)sender {
@@ -213,9 +236,11 @@
     if (self.player.playing) {
         [self.player pause];
         [self removeProgressTimer];
+        [self removeLrcTimer];
     } else {
         [self.player play];
-        [self progressTimer];
+        [self addProgressTimer];
+        [self addLrcTimer];
     }
 }
 
@@ -251,6 +276,12 @@
 - (IBAction)soneLrcs:(UIButton *)sender {
     self.showLrcButton.selected = !self.showLrcButton.selected;
     self.LrcView.hidden = !self.LrcView.hidden;
+    
+    if (self.LrcView.hidden) {
+        [self removeLrcTimer];
+    } else {
+        [self addLrcTimer];
+    }
 }
 
 #pragma mark - 私有方法
