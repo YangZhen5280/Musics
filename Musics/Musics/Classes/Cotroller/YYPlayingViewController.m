@@ -204,6 +204,7 @@
         self.showTimeLabel.hidden = YES;
     }
 }
+
 #pragma mark - 音乐暂停、上一首、下一首
 - (IBAction)playorStopButton {
     
