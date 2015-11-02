@@ -456,6 +456,11 @@
 					D95EFE001BE3702900222326 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = T64ZRTFY73;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};

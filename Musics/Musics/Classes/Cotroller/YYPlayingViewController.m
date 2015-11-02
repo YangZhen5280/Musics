@@ -13,8 +13,9 @@
 #import "YYMusicTools.h"
 #import "YYAudioTools.h"
 #import "YYLrcView.h"
+#import <MediaPlayer/MediaPlayer.h>
 
-@interface YYPlayingViewController () <AVAudioPlayerDelegate>
+@interface YYPlayingViewController () <AVAudioPlayerDelegate, AVAudioSessionDelegate>
 
 @property (nonatomic, strong) YYMusic *playingMusic;
 @property (nonatomic, strong) NSTimer *progressTimer;
@@ -118,10 +119,13 @@
     self.player.delegate = self;
     
     [self addProgressTimer];
-    [self addLrcTimer];
     [self updateInfo];
+    [self addLrcTimer];
+    [self updateLrcTimer];
     
     self.playOrStopButton.selected = NO;
+    
+    [self updateLockInfo];
 }
 - (void)stopPlayingMusic {
     
@@ -164,6 +168,7 @@
 - (void)updateInfo {
     
     CGFloat progressRatio = self.player.currentTime / self.player.duration;
+    
     self.sliderLeftConstrant.constant = progressRatio * (self.view.width - self.sliderButton.width);
     
     NSString *currentTimeStr = [self stringWithTime:self.player.currentTime];
@@ -266,7 +271,7 @@
     }
 }
 
-#pragma mark - AVAudioPlayerDelegate
+#pragma mark - AVAudioPlayerDelegate(8.0之前调用)
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
     if (flag) {
         [self nextButtonClick];
@@ -278,7 +283,13 @@
 - (void)audioPlayerEndInterruption:(AVAudioPlayer *)player {
     [self playorStopButton];
 }
-
+#pragma mark - AVAudioSessionDelegate(8.0之后版本调用)
+- (void)beginInterruption {
+    [self playorStopButton];
+}
+- (void)endInterruption {
+    [self playorStopButton];
+}
 
 #pragma mark - 显示歌词
 - (IBAction)soneLrcs:(UIButton *)sender {
@@ -289,6 +300,44 @@
         [self removeLrcTimer];
     } else {
         [self addLrcTimer];
+    }
+}
+
+#pragma mark - 锁屏左面上显示音乐 (并开启远程事件)
+- (void)updateLockInfo {
+    
+    MPNowPlayingInfoCenter *center = [MPNowPlayingInfoCenter defaultCenter];
+    
+    NSMutableDictionary *infos = [NSMutableDictionary dictionary];
+    infos[MPMediaItemPropertyAlbumTitle] = self.playingMusic.name;
+    infos[MPMediaItemPropertyAlbumArtist] = self.playingMusic.singer;
+    infos[MPMediaItemPropertyArtwork] = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:self.playingMusic.icon]];
+    infos[MPMediaItemPropertyPlaybackDuration] = @(self.player.duration);
+    infos[MPNowPlayingInfoPropertyElapsedPlaybackTime] = @(self.player.currentTime);
+    
+    [center setNowPlayingInfo:infos];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
+    [self becomeFirstResponder];
+}
+- (BOOL)canBecomeFirstResponder {
+    
+    return YES;
+}
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+    switch (event.subtype) {
+        case UIEventSubtypeRemoteControlPlay:
+        case UIEventSubtypeRemoteControlPause:
+            [self playorStopButton];
+            break;
+        case UIEventSubtypeRemoteControlNextTrack:
+            [self nextButtonClick];
+            break;
+        case UIEventSubtypeRemoteControlPreviousTrack:
+            [self previousButtonClick];
+            break;
+        default:
+            break;
     }
 }
 
